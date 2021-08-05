@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include ecs_bguarantee *.css
+recursive-include ecs_bguarantee *.csv
+recursive-include ecs_bguarantee *.html
+recursive-include ecs_bguarantee *.ico
+recursive-include ecs_bguarantee *.js
+recursive-include ecs_bguarantee *.json
+recursive-include ecs_bguarantee *.md
+recursive-include ecs_bguarantee *.png
+recursive-include ecs_bguarantee *.py
+recursive-include ecs_bguarantee *.svg
+recursive-include ecs_bguarantee *.txt
+recursive-exclude ecs_bguarantee *.pyc
