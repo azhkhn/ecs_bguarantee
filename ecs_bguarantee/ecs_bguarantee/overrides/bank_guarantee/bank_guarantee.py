@@ -13,7 +13,7 @@ from frappe.utils import add_to_date, now, nowdate
 
 
 def on_update_after_submit_1(doc, method=None):
-	#frappe.db.commit()
+	frappe.db.commit()
 	'''if getdate(doc.new_date) < getdate(doc.end_date):
 		frappe.throw(_("New Date cannot be before End Date."))
 	'''
@@ -28,8 +28,9 @@ def on_update_after_submit_1(doc, method=None):
 		doc.reload()
 	if not doc.deduction_return and doc.bank_guarantee_purpose == "Deduction":
 		frappe.throw(_("Select the Return Account before submitting."))
+	bg_issue(doc)
 
-def on_submit_1(self, method=None):
+def on_submit_1(doc, method=None):
 	frappe.db.sql(""" update `tabBank Guarantee` set issued = 1 where name = %s""", doc.name)
 	frappe.db.sql(""" update `tabBank Guarantee` set bank_guarantee_status = "Issued" where name = %s""", doc.name)
 	if not doc.bank and (doc.bank_guarantee_purpose == "Bank Guarantee" or doc.bank_guarantee_purpose == "Cheque"):
@@ -58,6 +59,7 @@ def on_submit_1(self, method=None):
 		frappe.throw(_("Bank Guarantee Commission cannot be zero !"))
 	frappe.db.sql(""" update `tabBank Guarantee` set posting_date = Null where name = %s""", doc.name)
 	frappe.db.commit()
+	bg_issue(doc)
 	#doc.reload()
 
 def bg_issue(doc, method=None):
