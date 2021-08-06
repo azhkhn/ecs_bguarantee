@@ -11,7 +11,15 @@ app_license = "MIT"
 
 # Includes in <head>
 # ------------------
-
+doc_events = {
+"Bank Guarantee": {
+	"on_submit": "ecs_bguarantee.ecs_bguarantee.overrides.bank_guarantee.bank_guarantee.on_submit_1",
+	"on_submit": "ecs_bguarantee.ecs_bguarantee.overrides.bank_guarantee.bank_guarantee.bg_issue"
+}
+}
+doctype_js = {
+	"Bank Guarantee" : "ecs_bguarantee/overrides/bank_guarantee/bank_guarantee.js"
+}
 # include js, css files in header of desk.html
 # app_include_css = "/assets/ecs_bguarantee/css/ecs_bguarantee.css"
 # app_include_js = "/assets/ecs_bguarantee/js/ecs_bguarantee.js"

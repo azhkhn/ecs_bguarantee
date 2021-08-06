@@ -1,0 +1,34 @@
+{
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2021-06-12 17:46:55.670156",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "LH",
+ "modified": "2021-08-05 21:15:05.387779",
+ "modified_by": "Administrator",
+ "module": "Ecs Bguarantee",
+ "name": "Bank Guarantee Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "select\n    `tabBank Guarantee`.name as \"Name:Link/Bank Guarantee:150\",\n    `tabBank Guarantee`.bank_guarantee_purpose as \"Bank Guarantee Purpose::150\",\n    `tabBank Guarantee`.bg_type as \"Bank Guarantee Type::150\",\n    `tabBank Guarantee`.customer as \"Customer Type::150\",\n    `tabBank Guarantee`.project as \"Project Type::150\",\n    `tabBank Guarantee`.customer_address as \"Customer Address Type::150\",\n    `tabBank Guarantee`.amount as \"Amount Type::150\",\n    `tabBank Guarantee`.start_date as \"Start Date Type::150\",\n    `tabBank Guarantee`.validity as \"Validity in Days Type::150\",\n    `tabBank Guarantee`.end_date as \"End Date::150\",\n    `tabBank Guarantee`.type_of_letter_of_guarantee as \"Bank Guarantee Status::150\",\n    `tabBank Guarantee`.bg_condition as \"Bank Guarantee Condition ::150\",\n    `tabBank Guarantee`.bank as \"Bank::150\",\n    `tabBank Guarantee`.bank_account as \"Bank Account::150\",\n    `tabBank Guarantee`.account as \"Account::150\",\n    `tabBank Guarantee`.bank_account_no as \"Bank Account No::150\",\n    `tabBank Guarantee`.bg_commission as \"Bank Guarantee Commission (EGP)::150\",\n    `tabBank Guarantee`.co as \"Initial Bank Guarantee Issuing Commission::150\",\n    `tabBank Guarantee`.rate as \"Reservation Rate For Initial BG ::150\",\n    `tabBank Guarantee`.co2 as \"Advanced Payment Bank Guarantee Issuing Commission::150\",\n    `tabBank Guarantee`.rate1 as \"Reservation Rate For Advanced Payment BG::150\",\n    `tabBank Guarantee`.co3 as \"Final Bank Guarantee Issuing Commission::150\",\n    `tabBank Guarantee`.rate2 as \"Reservation Rate For Final BG ::150\",\n    `tabBank Guarantee`.dpaccount as \"Insurance Account::150\",\n    `tabBank Guarantee`.dpaccountc as \"Fees Account::150\",\n    `tabBank Guarantee`.banking_facilities as \"Banking Facilities::150\",\n    `tabBank Guarantee`.account_for_bank_facilities as \"Bank Facilities Account::150\",\n    `tabBank Guarantee`.account_1 as \"Account::150\",\n    `tabBank Guarantee`.bank_guarantee_number as \"Bank Guarantee Number::150\",\n    `tabBank Guarantee`.name_of_beneficiary as \"Name of Beneficiary::150\"\n\n\n\n\n\nfrom\n    `tabBank Guarantee`\nwhere\n    `tabBank Guarantee`.docstatus != 2\n    and  `tabBank Guarantee`.start_date between %(from_date)s and %(to_date)s",
+ "ref_doctype": "Bank Guarantee",
+ "report_name": "Bank Guarantee Report",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Accounts Auditor"
+  }
+ ]
+}
