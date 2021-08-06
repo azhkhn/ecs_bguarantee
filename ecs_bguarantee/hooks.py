@@ -14,7 +14,7 @@ app_license = "MIT"
 doc_events = {
 "Bank Guarantee": {
 	"on_submit": "ecs_bguarantee.ecs_bguarantee.overrides.bank_guarantee.bank_guarantee.on_submit_1",
-	"on_update_after_submit": "ecs_bguarantee.ecs_bguarantee.overrides.bank_guarantee.bank_guarantee.on_update_after_submit_1"
+	"validate": "ecs_bguarantee.ecs_bguarantee.overrides.bank_guarantee.bank_guarantee.on_update_after_submit_1"
 }
 }
 doctype_js = {

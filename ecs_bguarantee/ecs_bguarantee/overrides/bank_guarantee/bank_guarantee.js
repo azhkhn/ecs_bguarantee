@@ -1,7 +1,7 @@
 // Copyright (c) 2016, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
-
+cur_frm.add_fetch('bank_account','account','account');
 cur_frm.add_fetch('company','acc1','acc1');
 cur_frm.add_fetch('company','acc2','acc2');
 cur_frm.add_fetch('company','acc3','acc3');
