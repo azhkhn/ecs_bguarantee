@@ -72,7 +72,7 @@ def bg_issue(doc, method=None):
 
 	if not doc.posting_date:
 		frappe.throw(_("Please Enter Posting Date."))
-	elif doc.bank_guarantee_purpose == "Deduction" and doc.return_ == "Yes" and doc.issued and not doc.deduction_return:
+	elif doc.bank_guarantee_purpose == "Deduction" and doc.bank_guarantee_status == "Returned" and doc.issued and not doc.deduction_return:
 		frappe.throw(_("Please Select the Return Account."))
 	else:
 		if doc.bank_guarantee_purpose == "Cash" and not doc.issued and doc.bg_type == "Providing":
@@ -466,11 +466,11 @@ def bg_return(doc, method=None):
 		party_account = frappe.db.get_value("Company", company, "default_payable_account")
 	if not doc.posting_date:
 		frappe.throw(_("Please Enter Posting Date."))
-	elif doc.bank_guarantee_purpose == "Deduction" and doc.return_ == "Yes" and doc.issued and not doc.deduction_return:
+	elif doc.bank_guarantee_purpose == "Deduction" and doc.bank_guarantee_status == "Returned" and doc.issued and not doc.deduction_return:
 		frappe.throw(_("Please Select the Return Account."))
 	else:
 
-		if doc.return_ == "Yes" and doc.bank_guarantee_purpose == "Cash" and not doc.returned and doc.bg_type == "Providing":
+		if doc.bank_guarantee_status == "Returned" and doc.bank_guarantee_purpose == "Cash" and not doc.returned and doc.bg_type == "Providing":
 			frappe.db.sql(""" update `tabBank Guarantee` set returned = 1 where name = %s""",doc.name)
 			frappe.db.sql(""" update `tabBank Guarantee` set bank_guarantee_status = "Returned" where name = %s""", doc.name)
 			doc.reload()
@@ -511,7 +511,7 @@ def bg_return(doc, method=None):
 			docs.insert()
 			docs.submit()
 
-		if doc.return_ == "Yes" and doc.bank_guarantee_purpose == "Cash" and not doc.returned and doc.bg_type == "Receiving":
+		if doc.bank_guarantee_status == "Returned" and doc.bank_guarantee_purpose == "Cash" and not doc.returned and doc.bg_type == "Receiving":
 			frappe.db.sql(""" update `tabBank Guarantee` set returned = 1 where name = %s""",doc.name)
 			frappe.db.sql(""" update `tabBank Guarantee` set bank_guarantee_status = "Returned" where name = %s""",
 						  doc.name)
@@ -554,7 +554,7 @@ def bg_return(doc, method=None):
 			docs.submit()
 
 		# return BG///////////////////////////////////////////////////
-		if doc.return_ == "Yes" and doc.bank_guarantee_purpose == "Bank Guarantee" and not doc.returned and doc.banking_facilities == "Without Facilities":
+		if doc.bank_guarantee_status == "Returned" and doc.bank_guarantee_purpose == "Bank Guarantee" and not doc.returned and doc.banking_facilities == "Without Facilities":
 			frappe.db.sql(""" update `tabBank Guarantee` set returned = 1 where name = %s""",doc.name)
 			frappe.db.sql(""" update `tabBank Guarantee` set bank_guarantee_status = "Returned" where name = %s""",
 						  doc.name)
@@ -597,7 +597,7 @@ def bg_return(doc, method=None):
 			docs.insert()
 			docs.submit()
 
-		if doc.return_ == "Yes" and doc.bank_guarantee_purpose == "Bank Guarantee" and not doc.returned and doc.banking_facilities == "With Facilities":
+		if doc.bank_guarantee_status == "Returned" and doc.bank_guarantee_purpose == "Bank Guarantee" and not doc.returned and doc.banking_facilities == "With Facilities":
 			frappe.db.sql(""" update `tabBank Guarantee` set returned = 1 where name = %s""",doc.name)
 			frappe.db.sql(""" update `tabBank Guarantee` set bank_guarantee_status = "Returned" where name = %s""",
 						  doc.name)
@@ -647,7 +647,7 @@ def bg_return(doc, method=None):
 			docs.insert()
 			docs.submit()
 
-		if doc.return_ == "Yes" and doc.bank_guarantee_purpose == "Deduction" and not doc.returned and doc.bg_type == "Providing":
+		if doc.bank_guarantee_status == "Returned" and doc.bank_guarantee_purpose == "Deduction" and not doc.returned and doc.bg_type == "Providing":
 			frappe.db.sql(""" update `tabBank Guarantee` set returned = 1 where name = %s""",doc.name)
 			frappe.db.sql(""" update `tabBank Guarantee` set bank_guarantee_status = "Returned" where name = %s""",
 						  doc.name)
@@ -691,7 +691,7 @@ def bg_return(doc, method=None):
 			docs.insert()
 			docs.submit()
 
-		if doc.return_ == "Yes" and doc.bank_guarantee_purpose == "Deduction" and not doc.returned and doc.bg_type == "Receiving":
+		if doc.bank_guarantee_status == "Returned" and doc.bank_guarantee_purpose == "Deduction" and not doc.returned and doc.bg_type == "Receiving":
 			frappe.db.sql(""" update `tabBank Guarantee` set returned = 1 where name = %s""",doc.name)
 			frappe.db.sql(""" update `tabBank Guarantee` set bank_guarantee_status = "Returned" where name = %s""",
 						  doc.name)
@@ -735,7 +735,7 @@ def bg_return(doc, method=None):
 			docs.insert()
 			docs.submit()
 
-		if doc.bank_guarantee_status == "Return" and doc.bank_guarantee_purpose == "Cheque" and not doc.returned and doc.bg_type == "Providing":
+		if doc.bank_guarantee_status == "Returned" and doc.bank_guarantee_purpose == "Cheque" and not doc.returned and doc.bg_type == "Providing":
 			company = frappe.db.get_value("Company",
 										  frappe.db.get_value("Global Defaults", None, "default_company"),
 										  "company_name")
@@ -783,7 +783,7 @@ def bg_return(doc, method=None):
 			docs.insert()
 			docs.submit()
 
-		if doc.bank_guarantee_status == "Return" and doc.bank_guarantee_purpose == "Cheque" and not doc.returned and doc.bg_type == "Receiving":
+		if doc.bank_guarantee_status == "Returned" and doc.bank_guarantee_purpose == "Cheque" and not doc.returned and doc.bg_type == "Receiving":
 			company = frappe.db.get_value("Company",
 										  frappe.db.get_value("Global Defaults", None, "default_company"),
 										  "company_name")
