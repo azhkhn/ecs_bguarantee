@@ -17,6 +17,34 @@ frappe.ui.form.on("Bank Guarantee", {
 				]
 			};
 		});
+		frm.set_query("dpaccount", function() {
+			return {
+				filters: [
+					["Account", "is_group", "!=", "1"]
+				]
+			};
+		});
+		frm.set_query("dpaccountc", function() {
+			return {
+				filters: [
+					["Account", "is_group", "!=", "1"]
+				]
+			};
+		});
+		frm.set_query("deduction_return", function() {
+			return {
+				filters: [
+					["Account", "is_group", "!=", "1"]
+				]
+			};
+		});
+		frm.set_query("cash_account", function() {
+			return {
+				filters: [
+					["Account", "is_group", "!=", "1"]
+				]
+			};
+		});
 	}
 });
 frappe.ui.form.on("Bank Guarantee", "rate", function(frm) {
@@ -147,5 +175,23 @@ frappe.ui.form.on("Bank Guarantee", "customer", function(frm, cdt, cdn) {
 //   cur_frm.set_value("validity", frappe.datetime.get_day_diff( cur_frm.doc.end_date , cur_frm.doc.start_date ));
 // });
 
+frappe.ui.form.on('Process Order', {
 
+
+///start return functions
+bank_guarantee_status: function(frm) {
+		if(frm.doc.issued){
+			frappe.call({
+				doc: frm.doc,
+				method: "get_process_details",
+				callback: function(r) {
+					refresh_field("outputs");
+					refresh_field("scrap");
+					refresh_field("materials");
+				}
+			});
+		}
+	}
+
+})
 

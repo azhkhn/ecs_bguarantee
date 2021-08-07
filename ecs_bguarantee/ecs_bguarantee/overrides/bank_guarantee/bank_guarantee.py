@@ -13,7 +13,7 @@ from frappe.utils import add_to_date, now, nowdate
 
 
 def on_update_after_submit_1(doc, method=None):
-	frappe.db.commit()
+	#frappe.db.commit()
 	'''if getdate(doc.new_date) < getdate(doc.end_date):
 		frappe.throw(_("New Date cannot be before End Date."))
 	'''
