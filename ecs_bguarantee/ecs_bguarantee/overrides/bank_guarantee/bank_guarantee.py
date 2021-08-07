@@ -735,7 +735,7 @@ def bg_return(doc, method=None):
 			docs.insert()
 			docs.submit()
 
-		if doc.return_ == "Yes" and doc.bank_guarantee_purpose == "Cheque" and not doc.returned and doc.bg_type == "Providing":
+		if doc.bank_guarantee_status == "Return" and doc.bank_guarantee_purpose == "Cheque" and not doc.returned and doc.bg_type == "Providing":
 			company = frappe.db.get_value("Company",
 										  frappe.db.get_value("Global Defaults", None, "default_company"),
 										  "company_name")
@@ -783,7 +783,7 @@ def bg_return(doc, method=None):
 			docs.insert()
 			docs.submit()
 
-		if doc.return_ == "Yes" and doc.bank_guarantee_purpose == "Cheque" and not doc.returned and doc.bg_type == "Receiving":
+		if doc.bank_guarantee_status == "Return" and doc.bank_guarantee_purpose == "Cheque" and not doc.returned and doc.bg_type == "Receiving":
 			company = frappe.db.get_value("Company",
 										  frappe.db.get_value("Global Defaults", None, "default_company"),
 										  "company_name")
