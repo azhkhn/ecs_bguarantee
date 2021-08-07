@@ -28,7 +28,7 @@ def on_update_after_submit_1(doc, method=None):
 		doc.reload()
 	if not doc.deduction_return and doc.bank_guarantee_purpose == "Deduction":
 		frappe.throw(_("Select the Return Account before submitting."))
-	bg_issue(doc)
+	bg_return(doc)
 
 def on_submit_1(doc, method=None):
 	frappe.db.sql(""" update `tabBank Guarantee` set issued = 1 where name = %s""", doc.name)
