@@ -1,8 +1,8 @@
 {
- "cards_label": "Transactions",
+ "cards_label": "",
  "category": "Modules",
  "charts": [],
- "creation": "2021-08-06 19:19:55.611710",
+ "creation": "2021-08-08 16:26:05.844039",
  "developer_mode_only": 0,
  "disable_user_customization": 0,
  "docstatus": 0,
@@ -12,12 +12,12 @@
  "idx": 0,
  "is_default": 0,
  "is_standard": 1,
- "label": "Bank Guarantee",
+ "label": "Bank Guarantees",
  "links": [
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Transactions",
+   "label": "Transaction",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Card Break"
@@ -39,21 +39,12 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Bank Guarantee Report",
-   "link_to": "Bank Guarantee Report",
-   "link_type": "Report",
-   "onboard": 0,
-   "type": "Link"
   }
  ],
- "modified": "2021-08-08 00:15:13.498458",
+ "modified": "2021-08-08 16:43:13.673821",
  "modified_by": "Administrator",
  "module": "Ecs Bguarantee",
- "name": "Bank Guarantee",
+ "name": "Bank Guarantees",
  "owner": "Administrator",
  "pin_to_bottom": 0,
  "pin_to_top": 1,
